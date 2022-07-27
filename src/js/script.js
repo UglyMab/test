@@ -62,7 +62,14 @@ function validateInputs(element) {
 }
 
 function listenPasswords(elem) {
+	elem.addEventListener('focus', (e) => {
+		e.target.previousElementSibling.classList.add('focus')
+	})
+	elem.addEventListener('blur', (e) => {
+		e.target.previousElementSibling.classList.remove('focus')
+	})
 	elem.addEventListener('input', (e) => {
+		console.log(document.activeElement)
 		if (!isSafari) {
 			e.target.previousElementSibling.innerText = mask.repeat(
 				e.target.value.length
