@@ -63,11 +63,12 @@ function validateInputs(element) {
 
 function listenPasswords(elem) {
 	elem.addEventListener('input', (e) => {
-		if (condition) {
-			e.target.classList.add('safari')
+		if (!isSafari) {
 			e.target.previousElementSibling.innerText = mask.repeat(
 				e.target.value.length
 			)
+		} else {
+			e.target.classList.add('safari')
 		}
 	})
 }
